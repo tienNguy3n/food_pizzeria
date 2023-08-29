@@ -1,0 +1,47 @@
+.widget{
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}
+
+.inner{
+    border: 4px solid #fff;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.inner img{
+    width: 100%;
+    height: 100%;
+    transition: all .6s ease-out;
+}
+
+.inner:hover img{
+    transform: rotate(5deg) scale(1.2);
+}
+
+.desc{
+    height: 100%;
+    font-size: 20px;
+    color: #fff;
+    padding: 20px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+@media (max-width: 992px) {
+    .widget{
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .desc{
+        display: none;
+    }
+}

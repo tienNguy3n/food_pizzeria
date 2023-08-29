@@ -1,0 +1,91 @@
+.container{
+    width: 33.333%;
+    line-height: 1.6;
+    padding: 40px 16px;
+    color: #c1c6cd;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    position: relative;
+}
+
+.price{
+    width: 80px;
+    height: 80px;
+    line-height: 76px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #000;
+    background-color: #f5d00f;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 20px;
+}
+
+.container:hover img{
+    transform: rotate(5deg);
+}
+
+.container img{
+    display: inline-block;
+    width: 100%;
+    padding: 0 30px;
+    transition: all .6s ease-out;
+}
+
+.container h3{
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.form{
+    padding-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.form button{
+    font-size: 16px;
+    font-family: inherit;
+    text-transform: uppercase;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #c1c6cd;
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+}
+
+.form button:hover{
+    background-color: #f5d00f;
+    color: initial;
+    transform: scale(1.1);
+}
+
+.form button:hover:active{
+    transform: none;
+}
+
+.form input {
+  width: 3rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font: inherit;
+  padding-left: 0.5rem;
+}
+
+@media(max-width: 992px){
+    .container{
+        width: 80%;
+        min-width: 280px;
+        margin: 0 auto;
+    }
+}
