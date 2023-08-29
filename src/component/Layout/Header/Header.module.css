@@ -1,0 +1,225 @@
+.header {
+    width: 100%;
+    font-size: 15px;
+    background-color: #000;
+    color: #fff;
+    z-index: 10;
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+.inner {
+    height: 113px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.title h1 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.title h4 {
+    font-size: 13px;
+    font-style: italic;
+    line-height: 1.2;
+}
+
+.nav {
+    color: #c1c6cd;
+}
+
+.nav-menu {
+    display: inline-block;
+}
+
+.nav-menu ul {
+    list-style: none;
+}
+
+.nav-menu li {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.nav-menu li::after {
+    width: 1px;
+    height: 15px;
+    background-color: #c1c6cd;
+    position: absolute;
+    top: 15px;
+    right: -2px;
+    content: '';
+}
+
+.nav-menu li a {
+    color: inherit;
+    padding: 11px 15px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.nav-menu li a:hover {
+    color: #f5d010;
+}
+
+.nav-menu li a:hover::after {
+    height: 1px;
+    background-color: #f5d010;
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 4px;
+    content: '';
+}
+
+.sub-menu {
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    background-color: #000;
+    position: absolute;
+    top: 113px;
+    right: 0;
+    z-index: 30;
+    opacity: 0;
+    display: none;
+    visibility: hidden;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+
+.show-sub-menu{
+    opacity: 1;
+    visibility: visible;
+}
+
+.sub-menu ul {
+    list-style: none;
+}
+
+.sub-menu li {
+    justify-content: center;
+    display: flex;
+}
+
+.sub-menu li a {
+    color: inherit;
+    text-decoration: none;
+    padding: 11px 15px;
+    position: relative;
+    cursor: pointer;
+}
+
+.sub-menu li a:hover {
+    color: #f5d010;
+}
+
+.sub-menu li a:hover::after {
+    height: 1px;
+    background-color: #f5d010;
+    position: absolute;
+    right: 15px;
+    left: 15px;
+    bottom: 4px;
+    content: '';
+}
+
+.sub-menu-icon {
+    font-size: 30px;
+    margin-right: 16px;
+    padding: 8px 16px;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+}
+
+.cart{
+    padding: 11px 15px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.cart:hover{
+    color: #f5d010;
+}
+
+.small-label {
+    width: 16px;
+    height: 16px;
+    color: #000;
+    font-size: 13px;
+    text-align: center;
+    line-height: 16px;
+    border-radius: 4px;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #f5d00f;
+}
+
+.cart-total {
+    display: inline-block;
+    transform: rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+    .inner {
+        height: 130px;
+    }
+
+    .title {
+        display: none;
+    }
+
+    .sub-menu {
+        top: 130px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .inner {
+        padding: 0 28px;
+        justify-content: space-between;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+
+    .sub-menu{
+        display: block;
+    }
+
+    .sub-menu-icon {
+        display: block;
+    }
+
+    .small-label {
+        width: 18px;
+        height: 18px;
+        font-size: 15px;
+        line-height: 18px;
+    }
+
+    .cart{
+        font-size: 26px;
+        color: #fff;
+    }
+}

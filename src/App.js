@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import { useState } from 'react';
+
+import DefaultLayout from './component/Layout/DefaultLayout/DefaultLayout';
+import CartProvider from './store/CartProvider';
+import Cart from './component/Cart/Cart';
+import { routes } from './routes';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [cartIsShown, setCartIsShown] = useState(false);
+
+    const showCartHandler = () => {
+        setCartIsShown(true);
+    };
+
+    const hideCartHandler = () => {
+        setCartIsShown(false);
+    };
+
+    return (
+        <CartProvider>
+            {cartIsShown && <Cart onHideCart={hideCartHandler} />}
+            <Routes>
+                {routes.map((route, index) => {
+                    const Page = route.component;
+                    return (
+                        <Route
+                        key={index}
+                        path={route.path}
+                        element={
+                                <DefaultLayout onShowCart={showCartHandler}>
+                                    <Page />
+                                </DefaultLayout>
+                            }
+                        />
+                    );
+                })}
+            </Routes>
+        </CartProvider>
+    );
 }
 
 export default App;
+// https://preview.themeforest.net/item/food-pizzeria-ultimate-delivery-wordpress-theme/full_screen_preview/13547531?_ga=2.96438046.322880665.1691833178-1688199429.1691833178
