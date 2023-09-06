@@ -19,7 +19,11 @@ const AboutUs = () => {
     useEffect(() => {
         fetchAPI('members.json', {method: 'GET'})
             .then((data) => {
-                setDataMembers(data);
+                const loadedData = [];
+                for (const key in data) {
+                    loadedData.push({ ...data[key], id: key });
+                }
+                setDataMembers(loadedData);
             })
     }, []);
 
