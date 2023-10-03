@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faCartShopping } from '@fortawesome/free-solid-svg-icons';
@@ -6,15 +7,14 @@ import classNames from 'classnames/bind';
 
 import styles from './Header.module.css';
 import Navigation from './Navigation/Navigation';
-import CartContext from '../../../store/cart-context';
 
 const cx = classNames.bind(styles);
 
 const Header = (props) => {
     const [showSubNav, setShowSubNav] = useState(false);
-    const cartContext = useContext(CartContext);
+    const cart = useSelector(state => state.cart);
 
-    const numberOfCartItems = cartContext.items.reduce((curNumber, item) => {
+    const numberOfCartItems = cart.items.reduce((curNumber, item) => {
         return curNumber + item.amount;
     }, 0);
 
