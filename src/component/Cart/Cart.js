@@ -1,46 +1,48 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames/bind';
 
 import styles from './Cart.module.css';
-import CartContext from '../../store/cart-context';
 import Modal from '../UI/Modal/Modal';
 import CartItem from './CartItem';
 import Checkout from './Checkout';
 import fetchAPI from '../../services';
+import { add, clear, remove } from '../../store/cartSlice';
 
 const cx = classNames.bind(styles);
 
 const Cart = (props) => {
-    const cartContext = useContext(CartContext);
+    const dispatch = useDispatch()
+    const cart = useSelector((state) => state.cart);
     const [isDidSubmit, setIsDidSubmit] = useState(false);
-    const hasItems = cartContext.items.length > 0;
-
+    const hasItems = cart.items.length > 0;
+    
     const submitOrderHandler = (userData) => {
         fetchAPI('orders.json', {
             method: 'POST',
             body: JSON.stringify({
                 user: userData,
-                orderedItems: cartContext.items,
+                orderedItems: cart.items,
             }),
         });
         setIsDidSubmit(true);
-        cartContext.clearCart();
+        dispatch(clear())
     };
 
     const cartItemAddHandler = (item) => {
-        cartContext.addItem({
+        dispatch(add({
             ...item,
             amount: 1,
-        });
+        }))
     };
 
     const cartItemRemoveHandler = (id) => {
-        cartContext.removeItem(id);
+        dispatch(remove(id))
     };
 
     const cartItems = (
         <ul className={cx('cart-items')}>
-            {cartContext.items.map((item) => (
+            {cart.items.map((item) => (
                 <CartItem
                     key={item.id}
                     item={item}
@@ -59,7 +61,7 @@ const Cart = (props) => {
                     {!hasItems && <div className={cx('message')}>Nothings</div>}
                     <div className={cx('total')}>
                         <span>Total Amount</span>
-                        <span>${cartContext.totalAmount}</span>
+                        <span>${cart.totalAmount}</span>
                     </div>
 
                     {hasItems && <Checkout onHideCart={props.onHideCart} onSubmit={submitOrderHandler} />}

@@ -1,24 +1,27 @@
-import React, { useContext, useRef } from 'react';
+import React, { useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import classNames from 'classnames/bind';
 
-import CartContext from '../../../store/cart-context';
 import styles from './MealItem.module.css';
+import { add } from '../../../store/cartSlice';
 
 const cx = classNames.bind(styles);
 
 const MealItem = (props) => {
+    const dispatch = useDispatch();
     const { id, name, price, description, image } = props.meal;
-    const cartContext = useContext(CartContext);
     const amountInputRef = useRef();
 
     const addToCartHandler = (amount) => {
-        cartContext.addItem({
-            id: id,
-            name: name,
-            price: price,
-            image: image,
-            amount: amount,
-        });
+        dispatch(
+            add({
+                id: id,
+                name: name,
+                price: price,
+                image: image,
+                amount: amount,
+            })
+        );
     };
 
     const submitHandle = (e) => {

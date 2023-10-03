@@ -2,7 +2,6 @@ import { Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
 
 import DefaultLayout from './component/Layout/DefaultLayout/DefaultLayout';
-import CartProvider from './store/CartProvider';
 import Cart from './component/Cart/Cart';
 import { routes } from './routes';
 
@@ -18,7 +17,7 @@ function App() {
     };
 
     return (
-        <CartProvider>
+        <>
             {cartIsShown && <Cart onHideCart={hideCartHandler} />}
             <Routes>
                 {routes.map((route, index) => {
@@ -36,7 +35,7 @@ function App() {
                     );
                 })}
             </Routes>
-        </CartProvider>
+        </>
     );
 }
 
