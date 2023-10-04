@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import styles from './AboutUs.module.css';
 import Banner from '../Layout/Banner/Banner';
 import { Carousel } from 'react-responsive-carousel';
-import fetchAPI from '../../services';
+import { instance as axios } from '../../services/axios';
 
 const cx = classNames.bind(styles);
 const sliders = [
@@ -17,14 +17,19 @@ const AboutUs = () => {
     const [dataMembers, setDataMembers] = useState([]);
 
     useEffect(() => {
-        fetchAPI('members.json', {method: 'GET'})
+        axios
+            .get('members.json')
             .then((data) => {
+                console.log(data);
                 const loadedData = [];
                 for (const key in data) {
                     loadedData.push({ ...data[key], id: key });
                 }
                 setDataMembers(loadedData);
             })
+            .catch((error) => {
+                alert(error.message);
+            });
     }, []);
 
     return (
