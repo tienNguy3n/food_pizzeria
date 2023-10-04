@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 
 import styles from './Menu.module.css';
 import MealItem from './MealItem/MealItem';
-import fetchAPI from '../../services';
+import { instance as axios } from '../../services/axios';
 
 const cx = classNames.bind(styles);
 
@@ -13,25 +13,30 @@ const Menu = () => {
     const [isDecrease, setIsDecrease] = useState(false);
 
     useEffect(() => {
-        fetchAPI('meals.json', { method: 'GET' }).then((data) => {
-            const loadedData = [];
-            for (const key in data) {
-                loadedData.push({ ...data[key], id: key });
-            }
-            setMeals(loadedData)
-        });
+        axios
+            .get('meals.json')
+            .then((data) => {
+                const loadedData = [];
+                for (const key in data) {
+                    loadedData.push({ ...data[key], id: key });
+                }
+                setMeals(loadedData);
+            })
+            .catch((error) => {
+                alert(error.message);
+            });
     }, []);
 
     const increaseHandler = () => {
         meals.sort((a, b) => a.price - b.price);
-        setIsIncrease(true)
-        setIsDecrease(false)
+        setIsIncrease(true);
+        setIsDecrease(false);
     };
 
     const decreaseHandler = () => {
         meals.sort((a, b) => b.price - a.price);
-        setIsIncrease(false)
-        setIsDecrease(true)
+        setIsIncrease(false);
+        setIsDecrease(true);
     };
 
     return (

@@ -6,7 +6,7 @@ import styles from './Cart.module.css';
 import Modal from '../UI/Modal/Modal';
 import CartItem from './CartItem';
 import Checkout from './Checkout';
-import fetchAPI from '../../services';
+import { instance as axios } from '../../services/axios';
 import { add, clear, remove } from '../../store/cartSlice';
 
 const cx = classNames.bind(styles);
@@ -18,13 +18,15 @@ const Cart = (props) => {
     const hasItems = cart.items.length > 0;
     
     const submitOrderHandler = (userData) => {
-        fetchAPI('orders.json', {
-            method: 'POST',
-            body: JSON.stringify({
+        axios
+            .post('orders.json', {
                 user: userData,
                 orderedItems: cart.items,
-            }),
-        });
+            })
+            .catch((error) => {
+                alert(error.message);
+            });
+        
         setIsDidSubmit(true);
         dispatch(clear())
     };
