@@ -12,10 +12,12 @@ const cx = classNames.bind(styles);
 const Home = () => {
     return (
         <div className={cx('container')}>
-            <Slides />
-            <Widget />
-            <Banner />
-            <Introduce />
+            <div className={cx('inner')}>
+                <Slides />
+                <Widget />
+                <Banner />
+                <Introduce />
+            </div>
         </div>
     );
 };

@@ -4,10 +4,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Vollkorn', serif;
 }
 
 html{
-  font-family: 'Vollkorn', serif;
   font-size: 16px;
   line-height: 1.5;
   background-color: #121924;
