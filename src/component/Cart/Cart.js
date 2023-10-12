@@ -6,40 +6,42 @@ import styles from './Cart.module.css';
 import Modal from '../UI/Modal/Modal';
 import CartItem from './CartItem';
 import Checkout from './Checkout';
-import { instance as axios } from '../../services/axios';
 import { add, clear, remove } from '../../store/cartSlice';
+import axios from 'axios';
 
 const cx = classNames.bind(styles);
 
 const Cart = (props) => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
     const [isDidSubmit, setIsDidSubmit] = useState(false);
     const hasItems = cart.items.length > 0;
-    
+
     const submitOrderHandler = (userData) => {
         axios
-            .post('orders.json', {
+            .post('https://food-pizzeria-default-rtdb.firebaseio.com/orders.json', {
                 user: userData,
                 orderedItems: cart.items,
             })
             .catch((error) => {
                 alert(error.message);
             });
-        
+
         setIsDidSubmit(true);
-        dispatch(clear())
+        dispatch(clear());
     };
 
     const cartItemAddHandler = (item) => {
-        dispatch(add({
-            ...item,
-            amount: 1,
-        }))
+        dispatch(
+            add({
+                ...item,
+                amount: 1,
+            })
+        );
     };
 
     const cartItemRemoveHandler = (id) => {
-        dispatch(remove(id))
+        dispatch(remove(id));
     };
 
     const cartItems = (

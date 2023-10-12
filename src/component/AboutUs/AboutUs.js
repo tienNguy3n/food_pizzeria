@@ -18,14 +18,9 @@ const AboutUs = () => {
 
     useEffect(() => {
         axios
-            .get('members.json')
+            .get('members')
             .then((data) => {
-                console.log(data);
-                const loadedData = [];
-                for (const key in data) {
-                    loadedData.push({ ...data[key], id: key });
-                }
-                setDataMembers(loadedData);
+                setDataMembers(data);
             })
             .catch((error) => {
                 alert(error.message);
