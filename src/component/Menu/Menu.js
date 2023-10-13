@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import ReactPaginate from 'https://cdn.skypack.dev/react-paginate@7.1.3';
+// import ReactPaginate from 'https://cdn.skypack.dev/react-paginate@7.1.3';
+import ReactPaginate from 'react-paginate';
 import classNames from 'classnames/bind';
 
 import styles from './Menu.module.css';
