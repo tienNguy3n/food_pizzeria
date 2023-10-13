@@ -117,6 +117,25 @@
     outline: none;
 }
 
+.loading{
+    width: 100%;
+    font-size: 30px;
+    margin-bottom: 100px;
+    text-align: center;
+    color: #fff;
+    animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+    from {
+        transform: translateY(-50%) rotate(0);
+    }
+
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
 .inner {
     width: 85%;
     display: flex;
