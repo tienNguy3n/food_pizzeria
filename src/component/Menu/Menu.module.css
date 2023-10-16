@@ -143,14 +143,29 @@
     margin: 30px auto 100px auto;
 }
 
-.pagination ul {
-    justify-content: center;
-    margin-top: -60px;
-    padding-bottom: 60px;
-}
-
 @media (max-width: 768px) {
     .container h1 {
         font-size: 32px;
+    }
+
+    .action{
+        width: 70%;
+        margin: 0 auto;
+        flex-direction: column-reverse;
+        gap: 60px;
+    }
+
+    .action .filter{
+        position: relative;
+    }
+
+    .action .wrapper{
+        flex-direction: column;
+        position: absolute;
+        left: 80px;
+    }
+
+    .action .input-search{
+        width: 100%;
     }
 }

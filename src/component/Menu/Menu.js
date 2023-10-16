@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
-// import ReactPaginate from 'https://cdn.skypack.dev/react-paginate@7.1.3';
 import ReactPaginate from 'react-paginate';
 import classNames from 'classnames/bind';
 
 import styles from './Menu.module.css';
+import './Paginate.css';
 import MealItem from './MealItem/MealItem';
 import { instance as axios } from '../../services/axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -113,28 +113,26 @@ const Menu = () => {
             )}
 
             {meals.length > 0 && (
-                <div className={cx('pagination')}>
-                    <ReactPaginate
-                        nextLabel="Next >"
-                        onPageChange={handlePageClick}
-                        pageRangeDisplayed={3}
-                        marginPagesDisplayed={2}
-                        pageCount={pageCount}
-                        previousLabel="< Previous"
-                        pageClassName="page-item"
-                        pageLinkClassName="page-link"
-                        previousClassName="page-item"
-                        previousLinkClassName="page-link"
-                        nextClassName="page-item"
-                        nextLinkClassName="page-link"
-                        breakLabel="..."
-                        breakClassName="page-item"
-                        breakLinkClassName="page-link"
-                        containerClassName="pagination"
-                        activeClassName="active"
-                        renderOnZeroPageCount={null}
-                    />
-                </div>
+                <ReactPaginate
+                    nextLabel="Next >"
+                    onPageChange={handlePageClick}
+                    pageRangeDisplayed={3}
+                    marginPagesDisplayed={2}
+                    pageCount={pageCount}
+                    previousLabel="< Previous"
+                    pageClassName="page-item"
+                    pageLinkClassName="page-link"
+                    previousClassName="page-item"
+                    previousLinkClassName="page-link"
+                    nextClassName="page-item"
+                    nextLinkClassName="page-link"
+                    breakLabel="..."
+                    breakClassName="page-item"
+                    breakLinkClassName="page-link"
+                    containerClassName="pagination"
+                    activeClassName="active"
+                    renderOnZeroPageCount={null}
+                />
             )}
         </div>
     );
