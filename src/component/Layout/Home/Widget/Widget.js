@@ -15,7 +15,7 @@ const Widget = () => {
             {images.map((image, index) => {
                 return (
                     <div key={index} className={cx('inner')}>
-                        <img src={image} />
+                        <img src={image} alt=''/>
                         <div className={cx('desc')}>
                             <p>
                                 THE BEST PIZZA

@@ -50,7 +50,7 @@ const AboutUs = () => {
                     </div>
 
                     <div className={cx('video')}>
-                        <iframe src="https://www.youtube.com/embed/8uOTZO6LTPs?feature=oembed" />
+                        <iframe title='myFrame' src="https://www.youtube.com/embed/8uOTZO6LTPs?feature=oembed" />
                     </div>
                 </div>
 
@@ -60,7 +60,7 @@ const AboutUs = () => {
                     <div className={cx('carousel')}>
                         <Carousel autoPlay infiniteLoop>
                             {sliders.map((slider, index) => {
-                                return <img key={index} src={slider} />;
+                                return <img key={index} src={slider} alt="" />;
                             })}
                         </Carousel>
                     </div>
@@ -86,7 +86,7 @@ const AboutUs = () => {
                         return (
                             <div className={cx('wrapper')} key={member.id}>
                                 <div className={cx('item')}>
-                                    <img src={member.image} />
+                                    <img src={member.image} alt=""/>
 
                                     <div className={cx('name-tag')}>
                                         <h4>{member.name}</h4>

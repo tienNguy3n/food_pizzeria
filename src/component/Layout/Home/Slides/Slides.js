@@ -20,7 +20,7 @@ const Slides = () => {
                 {images.map((image, index) => {
                     return (
                         <div key={index} className={cx('slide-img')}>
-                            <img src={image} />
+                            <img src={image} alt="" />
                             <Link to="/menu">
                                 <div className={cx('btn-order')}>
                                     <button className={cx('btn', 'btn-red')}>order now</button>

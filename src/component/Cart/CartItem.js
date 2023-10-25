@@ -12,7 +12,7 @@ const CartItem = (props) => {
         <li className={cx('cart-item')}>
             <div className={cx('item')}>
                 <div className={cx('info')}>
-                    <img src={image} />
+                    <img src={image} alt="" />
                     <div>
                         <h2>{name}</h2>
                         <span className={cx('price')}>${price}</span>
